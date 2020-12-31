@@ -8,6 +8,7 @@ import pathlib
 import re
 
 import click
+from fuzzywuzzy import fuzz
 
 # Courtesy of https://stackoverflow.com/questions/15491894/
 #                     regex-to-validate-date-format-dd-mm-yyyy
@@ -46,13 +47,30 @@ def get_path(filename):
 
 
 def parse_line(line):
-    """ Separate out product code, subtype, barcode. Validate. """
+    """Separate out product code, subtype, barcode. Validate.
+
+    This function performs fuzzy matching on product codes. If the distance
+    is small enough the closest product code is used.
+    """
     code = line[:4]
     subtype = line[4:10]
     id = line[10:]
 
+    closest_code = ""
     if code not in prod_categories.keys():
-        raise ValueError(f"Invalid product code {code}")
+        # This calculates the Levenshtein distance between an unknown code and
+        # all keys in the product file. If a code with only 1 mismatch is found
+        # then it is used as code. This way 1-character errors are corrected.
+        # Caveat: this does not deal with cases where two keys are too similar!
+        for key in prod_categories.keys():
+            ratio = fuzz.ratio(key, code)
+            if ratio >= 75:
+                closest_code = key
+
+        if closest_code == "":
+            raise ValueError(f"Invalid product code {code}")
+        else:
+            code = closest_code
 
     return code, subtype, id
 

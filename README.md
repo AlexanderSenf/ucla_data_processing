@@ -52,6 +52,9 @@ Specifying a code displays all subtypes for that code in the purchase.
 * The parameter `--uniqueids` is a flag, which is False by default. If it is
 set, all unique IDs are displayed for each product code in the purchase.
 
+The script can automatically correct for errors in the product code, if at most
+one of the characters is incorrect. 
+
 ### add
 
 There are two parmeters, both are required:

@@ -90,8 +90,12 @@ class TestProcess(unittest.TestCase):
         self.assertEqual(subtype, "DNSKAV")
         self.assertEqual(id, "OUXSCGSYBHQYHNMDQOBL")
 
-        # Test incorrect peoduct code in line
-        self.assertRaises(ValueError, process.parse_line, "CAXFDNSK")
+        # Test incorrect product code in line (more than one character wrong)
+        self.assertRaises(ValueError, process.parse_line, "CXXFDNSK")
+
+        # Test product code with one incorrect character
+        code, subtype, id = process.parse_line("BENGTTKYGDGJHGTFBNGDVZJGDIPXVS")
+        self.assertEqual(code, "BEVG")
 
     def test_count_shopping(self, shopping=VALID_FILE_SHOPPING_DICT):
         # Test counting over shopping dict
