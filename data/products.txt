@@ -1,0 +1,1 @@
+{'BEVG': 'Beverages', 'BAKE': 'Baked Goods', 'CANF': 'Canned Foods', 'CNSB': 'Condiments/Spices/Baking', 'SNCN': 'Snacks/Candy', 'DREG': 'Dairy/Eggs', 'FRZN': 'Frozen Foods', 'FRVG': 'Fruits/Vegetables', 'GRPA': 'Grains/Pastas', 'MTSF': 'Meat/Seafood', 'MISC': 'Misc'}
