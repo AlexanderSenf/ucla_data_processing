@@ -1,3 +1,4 @@
 click
 mock
 fuzzywuzzy
+python-Levenshtein

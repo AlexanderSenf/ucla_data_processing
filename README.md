@@ -1,6 +1,6 @@
 # Data Processing test program
 
-This is a test program writtent to extract data from a given text file (Question 2).
+This is a test program writtent to extract data from a given text file.
 
 This program was written using:
 * Ubuntu 18.04 LTS
@@ -8,11 +8,11 @@ This program was written using:
 
 ## Setup
 
-It is recommended to set up a virtual environemnt:
+It is recommended to set up a virtual environment:
 
 ```console
 python3 -m venv env
-sourve env/bin/activate
+source env/bin/activate
 ```
 
 Check out the project and change into the directory:
@@ -22,10 +22,20 @@ git clone https://github.com/AlexanderSenf/ucla_data_processing.git
 cd ucla_data_processing
 ```
 
-Once in the environment, all necessary prerequisites can be installed:
+Once in the environment, all necessary Python prerequisites can be installed:
 
 ```console
 pip install -r requirements.txt
+```
+
+This list contains one optional requirement `python-Levenshtein`, which is used
+to speed up fuzzy string matching (used in case an unknown product code is 
+encountered). The Linux prerequisites for this include `gcc` and `python3-dev`.
+
+In Ubuntu these are installed:
+
+```console
+sudo apt-get install gcc python3-dev
 ```
 
 ## Testing the program
@@ -39,8 +49,8 @@ This runs the program with the provided test data file by default.
 
 Help is displayed:  `python processor/process.py --help`
 
-There are two commands available in teh script:
-* `process` is used to process an inpot file.
+There are two commands available in the script:
+* `process` is used to process an input file.
 * `add` is used to add a procuct code to the list of recognized codes.
 
 ### process
