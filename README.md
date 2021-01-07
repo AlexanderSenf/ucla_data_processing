@@ -51,7 +51,7 @@ Help is displayed:  `python processor/process.py --help`
 
 There are two commands available in the script:
 * `process` is used to process an input file.
-* `add` is used to add a procuct code to the list of recognized codes.
+* `add` is used to add a product code to the list of recognized codes.
 
 ### process
 
